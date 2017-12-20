@@ -5,7 +5,7 @@ services:
     ports:
       - "8000:80"
     volumes:
-      - ${DIR}/config-server:/usr/local/apache2/htdocs:ro
+      - /Users/jamesblack/Projects/vertx-blueprint-microservice/docker/config-server
   mysql:
     image: mysql:latest
     expose:
@@ -79,6 +79,16 @@ services:
       - logstash
     expose:
       - "8082"
+  delivery-microservice:
+    image: vertx-blueprint/delivery-microservice
+    links:
+      - mysql
+      - logstash
+    depends_on:
+      - mysql
+      - logstash
+    expose:
+      - "8100"
   account-microservice:
     image: vertx-blueprint/account-microservice
     links:

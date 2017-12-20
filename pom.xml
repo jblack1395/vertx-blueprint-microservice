@@ -20,6 +20,7 @@
     <module>product-microservice</module>
     <module>inventory-microservice</module>
     <module>store-microservice</module>
+    <module>delivery-microservice</module>
     <module>shopping-cart-microservice</module>
     <module>payment-microservice</module>
     <module>order-microservice</module>
