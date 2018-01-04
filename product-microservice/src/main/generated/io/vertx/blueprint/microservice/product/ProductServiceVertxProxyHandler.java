@@ -89,12 +89,6 @@ public class ProductServiceVertxProxyHandler extends ProxyHandler {
     accessed();
   }
 
-  public MessageConsumer<JsonObject> registerHandler(String address) {
-    MessageConsumer<JsonObject> consumer = vertx.eventBus().<JsonObject>consumer(address).handler(this);
-    this.setConsumer(consumer);
-    return consumer;
-  }
-
   private void checkTimedOut(long id) {
     long now = System.nanoTime();
     if (now - lastAccessed > timeoutSeconds * 1000000000) {
@@ -158,7 +152,7 @@ public class ProductServiceVertxProxyHandler extends ProxyHandler {
                 msg.reply(new ServiceException(-1, res.cause().getMessage()));
               }
             } else {
-              msg.reply(new JsonArray(res.result().stream().map(Product::toJson).collect(Collectors.toList())));
+              msg.reply(new JsonArray(res.result().stream().map(r -> r == null ? null : r.toJson()).collect(Collectors.toList())));
             }
          });
           break;
@@ -172,7 +166,7 @@ public class ProductServiceVertxProxyHandler extends ProxyHandler {
                 msg.reply(new ServiceException(-1, res.cause().getMessage()));
               }
             } else {
-              msg.reply(new JsonArray(res.result().stream().map(Product::toJson).collect(Collectors.toList())));
+              msg.reply(new JsonArray(res.result().stream().map(r -> r == null ? null : r.toJson()).collect(Collectors.toList())));
             }
          });
           break;

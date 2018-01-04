@@ -67,7 +67,7 @@ public class CheckoutServiceVertxEBProxy implements CheckoutService {
 
   public void checkout(String userId, Handler<AsyncResult<CheckoutResult>> handler) {
     if (closed) {
-      handler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
+    handler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
       return;
     }
     JsonObject _json = new JsonObject();

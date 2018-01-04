@@ -36,6 +36,24 @@ import io.vertx.blueprint.microservice.store.Store;
 @io.vertx.lang.rxjava.RxGen(io.vertx.blueprint.microservice.store.StoreCRUDService.class)
 public class StoreCRUDService {
 
+  @Override
+  public String toString() {
+    return delegate.toString();
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    StoreCRUDService that = (StoreCRUDService) o;
+    return delegate.equals(that.delegate);
+  }
+  
+  @Override
+  public int hashCode() {
+    return delegate.hashCode();
+  }
+
   public static final io.vertx.lang.rxjava.TypeArg<StoreCRUDService> __TYPE_ARG = new io.vertx.lang.rxjava.TypeArg<>(
     obj -> new StoreCRUDService((io.vertx.blueprint.microservice.store.StoreCRUDService) obj),
     StoreCRUDService::getDelegate
@@ -116,7 +134,7 @@ public class StoreCRUDService {
   }
 
 
-  public static StoreCRUDService newInstance(io.vertx.blueprint.microservice.store.StoreCRUDService arg) {
+  public static  StoreCRUDService newInstance(io.vertx.blueprint.microservice.store.StoreCRUDService arg) {
     return arg != null ? new StoreCRUDService(arg) : null;
   }
 }

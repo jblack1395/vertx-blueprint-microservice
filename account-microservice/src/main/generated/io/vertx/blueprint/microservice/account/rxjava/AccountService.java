@@ -37,6 +37,24 @@ import io.vertx.core.Handler;
 @io.vertx.lang.rxjava.RxGen(io.vertx.blueprint.microservice.account.AccountService.class)
 public class AccountService {
 
+  @Override
+  public String toString() {
+    return delegate.toString();
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    AccountService that = (AccountService) o;
+    return delegate.equals(that.delegate);
+  }
+  
+  @Override
+  public int hashCode() {
+    return delegate.hashCode();
+  }
+
   public static final io.vertx.lang.rxjava.TypeArg<AccountService> __TYPE_ARG = new io.vertx.lang.rxjava.TypeArg<>(
     obj -> new AccountService((io.vertx.blueprint.microservice.account.AccountService) obj),
     AccountService::getDelegate
@@ -223,7 +241,7 @@ public class AccountService {
   }
 
 
-  public static AccountService newInstance(io.vertx.blueprint.microservice.account.AccountService arg) {
+  public static  AccountService newInstance(io.vertx.blueprint.microservice.account.AccountService arg) {
     return arg != null ? new AccountService(arg) : null;
   }
 }

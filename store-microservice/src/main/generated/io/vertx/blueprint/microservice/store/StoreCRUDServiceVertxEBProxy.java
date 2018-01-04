@@ -64,7 +64,7 @@ public class StoreCRUDServiceVertxEBProxy implements StoreCRUDService {
 
   public void saveStore(Store store, Handler<AsyncResult<Void>> resultHandler) {
     if (closed) {
-      resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
+    resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
       return;
     }
     JsonObject _json = new JsonObject();
@@ -82,7 +82,7 @@ public class StoreCRUDServiceVertxEBProxy implements StoreCRUDService {
 
   public void retrieveStore(String sellerId, Handler<AsyncResult<Store>> resultHandler) {
     if (closed) {
-      resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
+    resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
       return;
     }
     JsonObject _json = new JsonObject();
@@ -100,7 +100,7 @@ public class StoreCRUDServiceVertxEBProxy implements StoreCRUDService {
 
   public void removeStore(String sellerId, Handler<AsyncResult<Void>> resultHandler) {
     if (closed) {
-      resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
+    resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
       return;
     }
     JsonObject _json = new JsonObject();

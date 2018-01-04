@@ -1,0 +1,40 @@
+= Cheatsheets
+
+[[Analytics]]
+== Analytics
+
+++++
+ Analytics data object.
+++++
+'''
+
+[cols=">25%,^25%,50%"]
+[frame="topbot"]
+|===
+^|Name | Type ^| Description
+|[[analyticsId]]`analyticsId`|`String`|-
+|[[illustration]]`illustration`|`String`|-
+|[[name]]`name`|`String`|-
+|[[price]]`price`|`Number (double)`|-
+|[[sellerId]]`sellerId`|`String`|-
+|[[type]]`type`|`String`|-
+|===
+
+[[AnalyticsTuple]]
+== AnalyticsTuple
+
+++++
+ A product tuple represents the amount of a certain product in a shopping.
+++++
+'''
+
+[cols=">25%,^25%,50%"]
+[frame="topbot"]
+|===
+^|Name | Type ^| Description
+|[[amount]]`amount`|`Number (Integer)`|-
+|[[analyticsId]]`analyticsId`|`String`|-
+|[[price]]`price`|`Number (Double)`|-
+|[[sellerId]]`sellerId`|`String`|-
+|===
+

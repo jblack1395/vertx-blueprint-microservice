@@ -10,6 +10,7 @@ docker build -t "vertx-blueprint/inventory-microservice" $DIR/../inventory-micro
 docker build -t "vertx-blueprint/monitor-dashboard" $DIR/../monitor-dashboard
 docker build -t "vertx-blueprint/delivery-microservice" $DIR/../delivery-microservice
 docker build -t "vertx-blueprint/order-microservice" $DIR/../order-microservice
+docker build -t "vertx-blueprint/analytics-microservice" $DIR/../analytics-microservice
 docker build -t "vertx-blueprint/product-microservice" $DIR/../product-microservice
 docker build -t "vertx-blueprint/shopping-cart-microservice" $DIR/../shopping-cart-microservice
 docker build -t "vertx-blueprint/store-microservice" $DIR/../store-microservice

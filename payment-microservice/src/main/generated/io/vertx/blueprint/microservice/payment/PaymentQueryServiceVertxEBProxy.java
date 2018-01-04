@@ -64,7 +64,7 @@ public class PaymentQueryServiceVertxEBProxy implements PaymentQueryService {
 
   public void initializePersistence(Handler<AsyncResult<Void>> resultHandler) {
     if (closed) {
-      resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
+    resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
       return;
     }
     JsonObject _json = new JsonObject();
@@ -81,7 +81,7 @@ public class PaymentQueryServiceVertxEBProxy implements PaymentQueryService {
 
   public void addPaymentRecord(Payment payment, Handler<AsyncResult<Void>> resultHandler) {
     if (closed) {
-      resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
+    resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
       return;
     }
     JsonObject _json = new JsonObject();
@@ -99,7 +99,7 @@ public class PaymentQueryServiceVertxEBProxy implements PaymentQueryService {
 
   public void retrievePaymentRecord(String payId, Handler<AsyncResult<Payment>> resultHandler) {
     if (closed) {
-      resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
+    resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
       return;
     }
     JsonObject _json = new JsonObject();

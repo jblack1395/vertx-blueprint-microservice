@@ -108,8 +108,12 @@ public class APIGatewayVerticle extends RestAPIVerticle {
     // run with circuit breaker in order to deal with failure
     circuitBreaker.execute(future -> {
       getAllEndpoints().setHandler(ar -> {
+        System.out.println(context.request().absoluteURI());
         if (ar.succeeded()) {
           List<Record> recordList = ar.result();
+          for(Record r : recordList) {
+            System.out.println(r.toString());
+          }
           // get relative path and retrieve prefix to dispatch client
           String path = context.request().uri();
 

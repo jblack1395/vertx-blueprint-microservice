@@ -63,7 +63,7 @@ public class CounterServiceVertxEBProxy implements CounterService {
 
   public void addThenRetrieve(String key, Handler<AsyncResult<Long>> resultHandler) {
     if (closed) {
-      resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
+    resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
       return;
     }
     JsonObject _json = new JsonObject();
@@ -81,7 +81,7 @@ public class CounterServiceVertxEBProxy implements CounterService {
 
   public void addThenRetrieveBy(String key, Long increment, Handler<AsyncResult<Long>> resultHandler) {
     if (closed) {
-      resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
+    resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
       return;
     }
     JsonObject _json = new JsonObject();
@@ -100,7 +100,7 @@ public class CounterServiceVertxEBProxy implements CounterService {
 
   public void retrieveThenAdd(String key, Handler<AsyncResult<Long>> resultHandler) {
     if (closed) {
-      resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
+    resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
       return;
     }
     JsonObject _json = new JsonObject();
@@ -118,7 +118,7 @@ public class CounterServiceVertxEBProxy implements CounterService {
 
   public void reset(String key, Handler<AsyncResult<Void>> resultHandler) {
     if (closed) {
-      resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
+    resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
       return;
     }
     JsonObject _json = new JsonObject();

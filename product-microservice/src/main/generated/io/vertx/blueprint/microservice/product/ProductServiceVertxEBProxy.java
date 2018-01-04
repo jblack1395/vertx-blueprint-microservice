@@ -67,7 +67,7 @@ public class ProductServiceVertxEBProxy implements ProductService {
 
   public ProductService initializePersistence(Handler<AsyncResult<Void>> resultHandler) {
     if (closed) {
-      resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
+    resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
       return this;
     }
     JsonObject _json = new JsonObject();
@@ -85,7 +85,7 @@ public class ProductServiceVertxEBProxy implements ProductService {
 
   public ProductService addProduct(Product product, Handler<AsyncResult<Void>> resultHandler) {
     if (closed) {
-      resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
+    resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
       return this;
     }
     JsonObject _json = new JsonObject();
@@ -104,7 +104,7 @@ public class ProductServiceVertxEBProxy implements ProductService {
 
   public ProductService retrieveProduct(String productId, Handler<AsyncResult<Product>> resultHandler) {
     if (closed) {
-      resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
+    resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
       return this;
     }
     JsonObject _json = new JsonObject();
@@ -123,7 +123,7 @@ public class ProductServiceVertxEBProxy implements ProductService {
 
   public ProductService retrieveProductPrice(String productId, Handler<AsyncResult<JsonObject>> resultHandler) {
     if (closed) {
-      resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
+    resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
       return this;
     }
     JsonObject _json = new JsonObject();
@@ -142,7 +142,7 @@ public class ProductServiceVertxEBProxy implements ProductService {
 
   public ProductService retrieveAllProducts(Handler<AsyncResult<List<Product>>> resultHandler) {
     if (closed) {
-      resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
+    resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
       return this;
     }
     JsonObject _json = new JsonObject();
@@ -152,7 +152,11 @@ public class ProductServiceVertxEBProxy implements ProductService {
       if (res.failed()) {
         resultHandler.handle(Future.failedFuture(res.cause()));
       } else {
-        resultHandler.handle(Future.succeededFuture(res.result().body().stream().map(o -> o instanceof Map ? new Product(new JsonObject((Map) o)) : new Product((JsonObject) o)).collect(Collectors.toList())));
+        resultHandler.handle(Future.succeededFuture(res.result().body().stream()
+            .map(o -> { if (o == null) return null;
+                        return o instanceof Map ? new Product(new JsonObject((Map) o)) : new Product((JsonObject) o);
+                 })
+            .collect(Collectors.toList())));
       }
     });
     return this;
@@ -160,7 +164,7 @@ public class ProductServiceVertxEBProxy implements ProductService {
 
   public ProductService retrieveProductsByPage(int page, Handler<AsyncResult<List<Product>>> resultHandler) {
     if (closed) {
-      resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
+    resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
       return this;
     }
     JsonObject _json = new JsonObject();
@@ -171,7 +175,11 @@ public class ProductServiceVertxEBProxy implements ProductService {
       if (res.failed()) {
         resultHandler.handle(Future.failedFuture(res.cause()));
       } else {
-        resultHandler.handle(Future.succeededFuture(res.result().body().stream().map(o -> o instanceof Map ? new Product(new JsonObject((Map) o)) : new Product((JsonObject) o)).collect(Collectors.toList())));
+        resultHandler.handle(Future.succeededFuture(res.result().body().stream()
+            .map(o -> { if (o == null) return null;
+                        return o instanceof Map ? new Product(new JsonObject((Map) o)) : new Product((JsonObject) o);
+                 })
+            .collect(Collectors.toList())));
       }
     });
     return this;
@@ -179,7 +187,7 @@ public class ProductServiceVertxEBProxy implements ProductService {
 
   public ProductService deleteProduct(String productId, Handler<AsyncResult<Void>> resultHandler) {
     if (closed) {
-      resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
+    resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
       return this;
     }
     JsonObject _json = new JsonObject();
@@ -198,7 +206,7 @@ public class ProductServiceVertxEBProxy implements ProductService {
 
   public ProductService deleteAllProducts(Handler<AsyncResult<Void>> resultHandler) {
     if (closed) {
-      resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
+    resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
       return this;
     }
     JsonObject _json = new JsonObject();

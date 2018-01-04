@@ -66,7 +66,7 @@ public class OrderServiceVertxEBProxy implements OrderService {
 
   public OrderService initializePersistence(Handler<AsyncResult<Void>> resultHandler) {
     if (closed) {
-      resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
+    resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
       return this;
     }
     JsonObject _json = new JsonObject();
@@ -84,7 +84,7 @@ public class OrderServiceVertxEBProxy implements OrderService {
 
   public OrderService retrieveOrdersForAccount(String accountId, Handler<AsyncResult<List<Order>>> resultHandler) {
     if (closed) {
-      resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
+    resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
       return this;
     }
     JsonObject _json = new JsonObject();
@@ -95,7 +95,11 @@ public class OrderServiceVertxEBProxy implements OrderService {
       if (res.failed()) {
         resultHandler.handle(Future.failedFuture(res.cause()));
       } else {
-        resultHandler.handle(Future.succeededFuture(res.result().body().stream().map(o -> o instanceof Map ? new Order(new JsonObject((Map) o)) : new Order((JsonObject) o)).collect(Collectors.toList())));
+        resultHandler.handle(Future.succeededFuture(res.result().body().stream()
+            .map(o -> { if (o == null) return null;
+                        return o instanceof Map ? new Order(new JsonObject((Map) o)) : new Order((JsonObject) o);
+                 })
+            .collect(Collectors.toList())));
       }
     });
     return this;
@@ -103,7 +107,7 @@ public class OrderServiceVertxEBProxy implements OrderService {
 
   public OrderService createOrder(Order order, Handler<AsyncResult<Void>> resultHandler) {
     if (closed) {
-      resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
+    resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
       return this;
     }
     JsonObject _json = new JsonObject();
@@ -122,7 +126,7 @@ public class OrderServiceVertxEBProxy implements OrderService {
 
   public OrderService retrieveOrder(Long orderId, Handler<AsyncResult<Order>> resultHandler) {
     if (closed) {
-      resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
+    resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
       return this;
     }
     JsonObject _json = new JsonObject();

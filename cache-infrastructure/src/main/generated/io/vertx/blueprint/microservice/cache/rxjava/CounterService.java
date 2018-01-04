@@ -35,6 +35,24 @@ import io.vertx.core.Handler;
 @io.vertx.lang.rxjava.RxGen(io.vertx.blueprint.microservice.cache.CounterService.class)
 public class CounterService {
 
+  @Override
+  public String toString() {
+    return delegate.toString();
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    CounterService that = (CounterService) o;
+    return delegate.equals(that.delegate);
+  }
+  
+  @Override
+  public int hashCode() {
+    return delegate.hashCode();
+  }
+
   public static final io.vertx.lang.rxjava.TypeArg<CounterService> __TYPE_ARG = new io.vertx.lang.rxjava.TypeArg<>(
     obj -> new CounterService((io.vertx.blueprint.microservice.cache.CounterService) obj),
     CounterService::getDelegate
@@ -133,7 +151,7 @@ public class CounterService {
   }
 
 
-  public static CounterService newInstance(io.vertx.blueprint.microservice.cache.CounterService arg) {
+  public static  CounterService newInstance(io.vertx.blueprint.microservice.cache.CounterService arg) {
     return arg != null ? new CounterService(arg) : null;
   }
 }

@@ -79,6 +79,14 @@ services:
       - logstash
     expose:
       - "8082"
+  analytics-microservice:
+    image: vertx-blueprint/analytics-microservice
+    links:
+      - logstash
+    depends_on:
+      - logstash
+    expose:
+      - "8105"
   delivery-microservice:
     image: vertx-blueprint/delivery-microservice
     links:

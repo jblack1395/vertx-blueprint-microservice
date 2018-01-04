@@ -66,7 +66,7 @@ public class AccountServiceVertxEBProxy implements AccountService {
 
   public AccountService initializePersistence(Handler<AsyncResult<Void>> resultHandler) {
     if (closed) {
-      resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
+    resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
       return this;
     }
     JsonObject _json = new JsonObject();
@@ -84,7 +84,7 @@ public class AccountServiceVertxEBProxy implements AccountService {
 
   public AccountService addAccount(Account account, Handler<AsyncResult<Void>> resultHandler) {
     if (closed) {
-      resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
+    resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
       return this;
     }
     JsonObject _json = new JsonObject();
@@ -103,7 +103,7 @@ public class AccountServiceVertxEBProxy implements AccountService {
 
   public AccountService retrieveAccount(String id, Handler<AsyncResult<Account>> resultHandler) {
     if (closed) {
-      resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
+    resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
       return this;
     }
     JsonObject _json = new JsonObject();
@@ -122,7 +122,7 @@ public class AccountServiceVertxEBProxy implements AccountService {
 
   public AccountService retrieveByUsername(String username, Handler<AsyncResult<Account>> resultHandler) {
     if (closed) {
-      resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
+    resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
       return this;
     }
     JsonObject _json = new JsonObject();
@@ -141,7 +141,7 @@ public class AccountServiceVertxEBProxy implements AccountService {
 
   public AccountService retrieveAllAccounts(Handler<AsyncResult<List<Account>>> resultHandler) {
     if (closed) {
-      resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
+    resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
       return this;
     }
     JsonObject _json = new JsonObject();
@@ -151,7 +151,11 @@ public class AccountServiceVertxEBProxy implements AccountService {
       if (res.failed()) {
         resultHandler.handle(Future.failedFuture(res.cause()));
       } else {
-        resultHandler.handle(Future.succeededFuture(res.result().body().stream().map(o -> o instanceof Map ? new Account(new JsonObject((Map) o)) : new Account((JsonObject) o)).collect(Collectors.toList())));
+        resultHandler.handle(Future.succeededFuture(res.result().body().stream()
+            .map(o -> { if (o == null) return null;
+                        return o instanceof Map ? new Account(new JsonObject((Map) o)) : new Account((JsonObject) o);
+                 })
+            .collect(Collectors.toList())));
       }
     });
     return this;
@@ -159,7 +163,7 @@ public class AccountServiceVertxEBProxy implements AccountService {
 
   public AccountService updateAccount(Account account, Handler<AsyncResult<Account>> resultHandler) {
     if (closed) {
-      resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
+    resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
       return this;
     }
     JsonObject _json = new JsonObject();
@@ -178,7 +182,7 @@ public class AccountServiceVertxEBProxy implements AccountService {
 
   public AccountService deleteAccount(String id, Handler<AsyncResult<Void>> resultHandler) {
     if (closed) {
-      resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
+    resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
       return this;
     }
     JsonObject _json = new JsonObject();
@@ -197,7 +201,7 @@ public class AccountServiceVertxEBProxy implements AccountService {
 
   public AccountService deleteAllAccounts(Handler<AsyncResult<Void>> resultHandler) {
     if (closed) {
-      resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
+    resultHandler.handle(Future.failedFuture(new IllegalStateException("Proxy is closed")));
       return this;
     }
     JsonObject _json = new JsonObject();
